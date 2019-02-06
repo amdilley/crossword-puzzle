@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import _omit from 'lodash.omit';
+import produce from 'immer';
 import {
     getNextLocale,
     getNextEmptyLocale,
@@ -80,10 +80,9 @@ const App = ({
 
     function handleKeyDown (key, e) {
         if (key.length === 1) {
-            const nextCellValues = {
-                ...cellValues,
-                [currLocale]: key
-            };
+            const nextCellValues = produce(cellValues, draft => {
+                draft[currLocale] = key;
+            });
 
             setCellValues(nextCellValues);
             setLocale(
@@ -102,7 +101,9 @@ const App = ({
                 // stop history goBack
                 e.preventDefault();
 
-                let prevCellValues = _omit({ ...cellValues }, [currLocale]);
+                const prevCellValues = produce(cellValues, draft => {
+                    delete draft[currLocale];
+                });
 
                 setCellValues(prevCellValues);
                 updateLocaleByValues(prevCellValues, 'prev');
