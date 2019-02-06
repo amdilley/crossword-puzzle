@@ -1,44 +1,14 @@
-.board-container {
-  display: grid;
-  grid-gap: 1px;
-  margin: 40px auto;
-  background-color: #555;
-  border: 1px solid #000;
+.crossword-puzzle-container {
+    display: flex;
+    height: 100vh;
 }
 
-.board-container:focus {
-  outline: none
+.crossword-puzzle-container > * {
+    padding: 20px;
 }
 
-.cell {
-  position: relative;
-  background-color: #fff;
-  height: 50px; /* should match col width */
-}
-
-.cell.blocked {
-  background-color: #000;
-}
-
-.cell.active {
-  background-color: lightblue;
-}
-
-.cell.selected {
-  background-color: lightyellow;
-}
-
-.cell-number {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.cell-char {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
-  font-size: 1.8em;
+@media (max-width: 768px) {
+  .crossword-puzzle-container {
+    flex-wrap: wrap;
+  }
 }

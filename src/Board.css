@@ -1,0 +1,30 @@
+.board-container {
+  flex: 1;
+}
+
+.board {
+  display: grid;
+  grid-gap: 1px;
+  background-color: #555;
+  border: 1px solid #000;
+}
+
+.board:focus {
+  outline: none
+}
+
+.clues-panel-container {
+  display: flex;
+  flex: 1;
+  padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .board-container, .clues-panel-container {
+    flex-basis: 100%;
+  }
+
+  .clues-panel-container {
+    max-height: 400px;
+  }
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import './Cell.css';
+
 const Cell = ({
     value,
     clueNumber,
@@ -27,4 +29,3 @@ const Cell = ({
 };
 
 export default Cell;
-

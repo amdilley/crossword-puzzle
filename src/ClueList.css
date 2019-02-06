@@ -1,0 +1,27 @@
+.clue-list-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.clue-list-container:not(.active) {
+    opacity: 0.4;
+}
+
+.clue-list-display-text {
+    height: 20px;
+    text-transform: capitalize;
+}
+
+.clue-list {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.clue-container {
+    min-height: 60px;
+}
+
+.clue-container.selected {
+    background-color: lightyellow;
+}
