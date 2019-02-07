@@ -1,3 +1,4 @@
+import produce from 'immer';
 import _pickBy from 'lodash.pickby';
 
 const isAcrossLead = (w, index, board) =>
@@ -44,7 +45,8 @@ const getFirstLocaleByFilter = (
     filter = () => true,
     isReversed = false
 ) => {
-    const arr = isReversed ? inlineCells.reverse() : inlineCells;
+    const arr = produce(inlineCells, draft =>
+        isReversed ? draft.reverse() : draft);
     const rotationIndex = Math.max(startLocale && arr.indexOf(startLocale), 0);
 
     return rotateArray(arr, rotationIndex).filter(filter)[0];
@@ -64,7 +66,7 @@ const getUpdatedLocaleFactory = (direction, withWrap = true) => (board, orientat
 
     while (!updatedLocale) {
         // stay at current clue if no prev/next exists
-        if ((currClue && !currClue[direction]) || isBoardFilled(board.cells, cellValues)) {
+        if (currClue && !currClue[direction]) {
             return locale;
         }
 
@@ -83,7 +85,7 @@ const getUpdatedLocaleFactory = (direction, withWrap = true) => (board, orientat
                     ? currInlineCells.slice(0, localeIndex)
                     : currInlineCells.slice(localeIndex + 1),
             isFirstPass && locale,
-            l => isPrev === cellValues.hasOwnProperty(l) || !withWrap,
+            l => !withWrap || isPrev === cellValues.hasOwnProperty(l),
             isPrev
         );
         isFirstPass = false;

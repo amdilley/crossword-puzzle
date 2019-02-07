@@ -22,7 +22,11 @@ const Cell = ({
         >
             {!block && <>
                 <div className="cell-number">{clueNumber || ''}</div>
-                <div className="cell-char">{value}</div>
+                <div className="cell-char">
+                    <svg viewBox="0 0 14 18">
+                        <text x="2" y="17">{value}</text>
+                    </svg>
+                </div>
             </>}
         </div>
     )

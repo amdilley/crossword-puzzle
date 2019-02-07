@@ -30,6 +30,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  padding-left: 2px;
+  font-size: 0.8em;
 }
 
 .cell-char {
@@ -38,5 +40,4 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-transform: uppercase;
-  font-size: 1.8em;
 }
