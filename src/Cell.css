@@ -30,8 +30,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  padding-top: 1px;
   padding-left: 2px;
-  font-size: 0.8em;
 }
 
 .cell-char {

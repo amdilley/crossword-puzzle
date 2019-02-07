@@ -14,7 +14,7 @@ const ClueList = ({
         return Object.keys(clues).map(clue => (
             <li
                 key={`${displayText}-${clue}`}
-                className={classnames('clue-container', {
+                className={classnames('clue-container', `${displayText}-${clue}`, {
                     'selected': Number(selectedClueNumber) === Number(clue),
                 })}
                 onClick={() => onClueClick(clue)}

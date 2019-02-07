@@ -156,11 +156,26 @@ const Board = ({
         );
     }
 
+    function scrollClues () {
+        const acrossClueEl = document.querySelector(`.across-${board.cells[currLocale]['across']}`);
+        const downClueEl = document.querySelector(`.down-${board.cells[currLocale]['down']}`);
+
+        if (acrossClueEl) {
+            acrossClueEl.parentNode.scrollTop = acrossClueEl.offsetTop - acrossClueEl.parentNode.offsetTop;
+        }
+           
+        if (downClueEl) {
+            downClueEl.parentNode.scrollTop = downClueEl.offsetTop - downClueEl.parentNode.offsetTop;
+        }
+    }
+
     useEffect(() => {
         // add focus on mount
         // to ensure keydown event handling
         boardRef.current.focus();
-    }, []);
+
+        scrollClues();
+    }, [currLocale]);
 
     return (
         <>

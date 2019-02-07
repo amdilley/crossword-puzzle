@@ -11,4 +11,8 @@
   .crossword-puzzle-container {
     flex-wrap: wrap;
   }
+
+  .crossword-puzzle-container > * {
+    padding: 10px;
+}
 }
